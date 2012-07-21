@@ -8,10 +8,12 @@ Installation
 ------------
 
 ```html
-<script src='https://raw.github.com/caseywebdev/dpr/tree/master/dpr.js'></script>
+<script src='https://raw.github.com/caseywebdev/dpr/master/dpr.js'></script>
 ```
 
-or download `dpr.js` and reference your own copy.
+or download `dpr.js` and reference your own copy, or just copy the whole
+single line uglified code somewhere in the top of an existing file (it's not
+very long).
 
 Usage
 -----
