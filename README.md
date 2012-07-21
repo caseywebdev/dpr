@@ -7,7 +7,7 @@ Trying to make life easier in a world with too many **d**evice **p**ixel
 Installation
 ------------
 
-```javascript
+```html
 <script src='https://raw.github.com/caseywebdev/dpr/tree/master/dpr.js'></script>
 ```
 
