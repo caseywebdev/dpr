@@ -1,7 +1,8 @@
 dpr
 ===
 
-Trying to make life easier in a world with too many **d**evice **p**ixel **r**atios.
+Trying to make life easier in a world with too many **d**evice **p**ixel
+**r**atios.
 
 Installation
 ------------
@@ -43,7 +44,9 @@ dpr.configure
     one: true
 ```
 
-`dpr.configure` is just a convenience method. All of the properties can be accessed directly via `dpr[propertyName]` or extended like `_.extend dpr, options` or `$.extend dpr, options`
+`dpr.configure is just a convenience method. All of the properties can be
+`accessed directly via dpr[propertyName] or extended like _.extend dpr,
+`options or $.extend dpr, options
 
 Once you're all set up, you can do cool stuff like...
 
