@@ -4,8 +4,8 @@ dpr
 Trying to make life easier in a world with too many **d**evice **p**ixel
 **r**atios.
 
-Installation
-------------
+Install
+-------
 
 ```html
 <script src='https://raw.github.com/caseywebdev/dpr/master/dpr.js'></script>
@@ -15,8 +15,8 @@ or download `dpr.js` and reference your own copy, or just copy the whole
 single line uglified code somewhere in the top of an existing file (it's not
 very long).
 
-Usage
------
+Use
+---
 
 First, you'll want to configure dpr to your needs before you do anything. The
 defaults are shown and should work for most cases. Opinions will differ on the
@@ -64,6 +64,14 @@ $ -> $('html').addClass "dpr-#{dpr()}"
 ```
 
 More to come!
+
+Test
+----
+
+```bash
+make test
+```
+
 
 Licence
 -------
