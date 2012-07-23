@@ -34,16 +34,14 @@ dpr
   # increases, but for now be conservative.
   default: 1
 
-  format:
+  # What part of the file do we want to replace?
+  match: /(\..*)/
 
-    # What part of the file do we want to replace?
-    match: /(\..*)/
+  # How should filename alterations be formatted? (# is the dpr)
+  replace: '-#x$1'
 
-    # How should filename alterations be formatted? (# is the dpr)
-    replace: '-#x$1'
-
-    # Should filenames with DPR of 1 be formatted? (i.e. 'image-1x.png')
-    one: true
+  # Should filenames with DPR of 1 be formatted? (i.e. 'image-1x.png')
+  one: true
 ```
 
 `dpr.configure is just a convenience method. All of the properties can be
