@@ -26,7 +26,7 @@ get = ->
 
   # Remember the highest supported dpr
   supported = dpr.supported
-  best = supported[0]
+  best = null
   max = supported[supported.length - 1]
   mdpr = 'min-device-pixel-ratio: '
 
@@ -34,13 +34,15 @@ get = ->
   for check in supported
 
     # See if the DPR is >= what we can offer
-    if n >= best or mm and
+    if best is null or n >= best or mm and
         mm("#{mdpr}#{check}").matches or
         mm("-webkit-#{mdpr}#{check}").matches or
         mm("-moz-#{mdpr}#{check}").matches or
         mm("-o-#{mdpr}#{check}").matches or
         mm("-ms-#{mdpr}#{check}").matches
       best = check
+
+    # We've reached the limit
     else
       break
 
