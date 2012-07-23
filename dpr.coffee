@@ -7,7 +7,7 @@ $ = window.jQuery or window.Zepto
   return format arg if typeof arg is 'string'
 
   # Configure if arg is an object
-  configure arg if typeof arg is 'object'
+  return configure arg if typeof arg is 'object'
 
   # Return the current DPR
   get()
@@ -65,6 +65,7 @@ dpr.scan = ->
   dpr[name] = option for name, option of options
   if dpr.scanOnLoad and $
     $ -> dpr.scan()
+  dpr
 )
 
   # These are the ratios we have images for. Sort ASC (i.e. [1, 1.5, 2])
