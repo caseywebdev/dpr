@@ -1,3 +1,5 @@
+$ = window.jQuery or window.Zepto
+
 # Define the namespace
 @dpr = (arg) ->
 
@@ -51,10 +53,18 @@ format = (path) ->
   # Otherwise, replace the necessary part of the path with the goods
   path.replace dpr.match, dpr.replace.replace /#/, n
 
+# Scan the document for img[data-dpr-src] elements in need of the correct src
+# attribute
+dpr.scan = ->
+  if $
+    $('img[data-dpr-src]').each ->
+      ($t = $ @).attr(src: dpr $t.data 'dprSrc').removeAttr 'data-dpr-src'
+
 # Define a configure method for easy option setting
 (configure = (options) ->
-    dpr[name] = option for name, option of options
-    return dpr
+  dpr[name] = option for name, option of options
+  if dpr.scanOnLoad and $
+    $ -> dpr.scan()
 )
 
   # These are the ratios we have images for. Sort ASC (i.e. [1, 1.5, 2])
@@ -73,3 +83,7 @@ format = (path) ->
 
   # Should filenames with DPR of 1 be formatted?
   one: true
+
+  # Should dpr scan the document when the DOM is loaded? (requires jQuery or
+  # Zepto)
+  scanOnLoad: true
