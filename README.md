@@ -24,7 +24,7 @@ formatting and whether DPR of 1 should be formatted or not, so feel free to
 change those.
 
 ```coffeescript
-dpr.configure
+dpr
 
   # These are the ratios we have images for. Sort ASC (i.e. [1, 1.5, 2])
   supported: [1, 2]
@@ -42,7 +42,7 @@ dpr.configure
     # How should filename alterations be formatted? (# is the dpr)
     replace: '-#x$1'
 
-    # Should filenames with DPR of 1 be formatted?
+    # Should filenames with DPR of 1 be formatted? (i.e. 'image-1x.png')
     one: true
 ```
 
@@ -57,7 +57,7 @@ Once you're all set up, you can do cool stuff like...
 dpr()
 
 # Get a filename adjusted to the current device pixel ratio!
-dpr('/my/file/path.jpg') # -> '/my/file/path-2x.jpg' on a retina display
+dpr '/my/file/path.jpg' # -> '/my/file/path-2x.jpg' on a retina display
 
 # I like this trick for CSS
 $ -> $('html').addClass "dpr-#{dpr()}"
