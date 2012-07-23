@@ -34,14 +34,14 @@ get = ->
 
     # See if the DPR is >= what we can offer
     if n >= best or mm and
-        mm("#{mdpr}#{check}").matches or
-        mm("-webkit-#{mdpr}#{check}").matches or
-        mm("-moz-#{mdpr}#{check}").matches or
-        mm("-o-#{mdpr}#{check}").matches or
-        mm("-ms-#{mdpr}#{check}").matches
+        mm("#{mdpr}#{best}").matches or
+        mm("-webkit-#{mdpr}#{best}").matches or
+        mm("-moz-#{mdpr}#{best}").matches or
+        mm("-o-#{mdpr}#{best}").matches or
+        mm("-ms-#{mdpr}#{best}").matches
       continue unless best is highest
 
-    # If we reached this point, `check` is the best available match
+    # If we reached this point, `best` is the best available match
     return best
 
 # Format a path for the current dpr based on the set formatPattern
