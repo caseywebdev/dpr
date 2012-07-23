@@ -10,15 +10,6 @@
   # Return the current DPR
   get()
 
-# Format a path for the current dpr based on the set formatPattern
-format = (path) ->
-
-  # If the DPR is 1 and formatOne is false, don't do anything to path
-  return path if (n = dpr()) is 1 and not dpr.one
-
-  # Otherwise, replace the necessary part of the path with the goods
-  path.replace dpr.match, dpr.replace.replace /#/, n
-
 # Get the current DPR (I say current because it can actually change if a
 # window is dragged from, for example, a retina display to a standard 72 or
 # 92 ppi display)
@@ -50,6 +41,15 @@ get = ->
 
     # If we reached this point, `check` is the best available match
     return best
+
+# Format a path for the current dpr based on the set formatPattern
+format = (path) ->
+
+  # If the DPR is 1 and formatOne is false, don't do anything to path
+  return path if (n = dpr()) is 1 and not dpr.one
+
+  # Otherwise, replace the necessary part of the path with the goods
+  path.replace dpr.match, dpr.replace.replace /#/, n
 
 # Define a configure method for easy option setting
 (configure = (options) ->
