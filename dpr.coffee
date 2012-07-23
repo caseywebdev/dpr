@@ -34,7 +34,7 @@ get = ->
   for check in supported
 
     # See if the DPR is >= what we can offer
-    if best is null or n >= best or mm and
+    if best is null or n >= check or mm and
         mm("#{mdpr}#{check}").matches or
         mm("-webkit-#{mdpr}#{check}").matches or
         mm("-moz-#{mdpr}#{check}").matches or
