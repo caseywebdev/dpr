@@ -26,23 +26,26 @@ get = ->
 
   # Remember the highest supported dpr
   supported = dpr.supported
-  highest = supported[supported.length - 1]
+  best = supported[0]
+  max = supported[supported.length - 1]
   mdpr = 'min-device-pixel-ratio: '
 
   # Iterate through the available DPRs and find the best match
-  for best in supported
+  for check in supported
 
     # See if the DPR is >= what we can offer
     if n >= best or mm and
-        mm("#{mdpr}#{best}").matches or
-        mm("-webkit-#{mdpr}#{best}").matches or
-        mm("-moz-#{mdpr}#{best}").matches or
-        mm("-o-#{mdpr}#{best}").matches or
-        mm("-ms-#{mdpr}#{best}").matches
-      continue unless best is highest
+        mm("#{mdpr}#{check}").matches or
+        mm("-webkit-#{mdpr}#{check}").matches or
+        mm("-moz-#{mdpr}#{check}").matches or
+        mm("-o-#{mdpr}#{check}").matches or
+        mm("-ms-#{mdpr}#{check}").matches
+      best = check
+    else
+      break
 
-    # If we reached this point, `best` is the best available match
-    return best
+  # `best` is the best available match
+  return best
 
 # Format a path for the current dpr based on the set formatPattern
 format = (path) ->
