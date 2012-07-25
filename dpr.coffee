@@ -7,7 +7,7 @@ $ = window.jQuery or window.Zepto
   return format arg if typeof arg is 'string'
 
   # Configure if arg is an object
-  return configure arg if typeof arg is 'object'
+  return config arg if typeof arg is 'object'
 
   # Return the current DPR
   get()
@@ -66,7 +66,7 @@ dpr.scan = ->
       ($t = $ @).attr(src: dpr $t.data 'dprSrc').removeAttr 'data-dpr-src'
 
 # Define a configure method for easy option setting
-(configure = (options) ->
+(config = (options) ->
   dpr[name] = option for name, option of options
   if dpr.scanOnLoad and $
     $ -> dpr.scan()
