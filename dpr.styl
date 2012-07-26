@@ -9,17 +9,15 @@ dpr-one = true
 
 // This function is used for replacing the the new image
 dpr-replacer(lft rt n)
-  if n is 1 and !dpr-one
-    lft + '.' + rt // dpr of 1 as a special case
-  else
-    lft + dpr-delimiter + n + 'x.' + rt // all other dprs
+  return lft + '.' + rt if n is 1 and !dpr-one
+  lft + dpr-delimiter + n + 'x.' + rt // all other dprs
 
 // Do work
 dpr(sel lft rt siz = false, bkg = false)
   {sel}
-    unless siz is false
+    if siz
       background-size siz
-    unless bkg is false
+    if bkg
       background bkg
   for n in dpr-available
     .dpr-{n} {sel}
