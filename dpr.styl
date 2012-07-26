@@ -1,0 +1,26 @@
+// What images are available?
+dpr-available = 1 2
+
+// This will usually be '-' or '@' depending on how you name your files
+dpr-delimiter = '-'
+
+// Should dpr 1 be replaced?
+dpr-one = true
+
+// This function is used for replacing the the new image
+dpr-replacer(lft rt n)
+  if n is 1 and !dpr-one
+    lft + '.' + rt // dpr of 1 as a special case
+  else
+    lft + dpr-delimiter + n + 'x.' + rt // all other dprs
+
+// Do work
+dpr(sel lft rt siz = false, bkg = false)
+  {sel}
+    unless siz is false
+      background-size siz
+    unless bkg is false
+      background bkg
+  for n in dpr-available
+    .dpr-{n} {sel}
+      background-image url(dpr-replacer(lft, rt, n))
