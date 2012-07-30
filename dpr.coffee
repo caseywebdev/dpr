@@ -1,5 +1,8 @@
 $ = window.jQuery or window.Zepto
 
+# Store the computed dpr for subsequent calls
+cache = null
+
 # Define the namespace
 @dpr = (arg) ->
 
@@ -16,6 +19,8 @@ $ = window.jQuery or window.Zepto
 # window is dragged from, for example, a retina display to a standard 72 or
 # 92 ppi display)
 get = ->
+
+  return cache if cache
 
   # Check support for devicePixelRatio and matchMedia
   n = window.devicePixelRatio
@@ -47,7 +52,7 @@ get = ->
       break
 
   # `best` is the best available match
-  return best
+  cache = best
 
 # Format a path for the current dpr based on the set formatPattern
 format = (path) ->
@@ -67,9 +72,21 @@ dpr.scan = ->
 
 # Define a configure method for easy option setting
 (config = (options) ->
+
+  # Clear the cached DPR if the supported or default DPR changed
+  if (options.supported and "#{options.supported}" isnt "#{dpr.supported}") or
+      (options.default and options.default isnt dpr.default)
+    cache = null
+
+  # Apply the settings
   dpr[name] = option for name, option of options
-  if dpr.scanOnLoad and $
-    $ -> dpr.scan()
+
+
+  # Turn readyScan on or off
+  if $
+    $[if dpr.readyScan then 'on' else 'off'] 'ready', dpr.scan
+
+  # Return the DPR object for chaining
   dpr
 )
 
@@ -90,6 +107,6 @@ dpr.scan = ->
   # Should filenames with DPR of 1 be formatted?
   one: true
 
-  # Should dpr scan the document when the DOM is loaded? (requires jQuery or
+  # Should dpr scan the document when the DOM is ready? (requires jQuery or
   # Zepto)
-  scanOnLoad: true
+  readyScan: true

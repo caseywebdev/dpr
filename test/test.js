@@ -23,9 +23,13 @@ describe('dpr(path)', function() {
   it('should add -1x if dpr() is 1', function() {
     var hold;
     hold = dpr.supported;
-    dpr.supported = [1];
+    dpr({
+      supported: [1]
+    });
     dpr('/my/image.jpg').should.equal('/my/image-1x.jpg');
-    return dpr.supported = hold;
+    return dpr({
+      supported: hold
+    });
   });
   return it('should add -2x if on a MBP with retina display', function() {
     if (window.devicePixelRatio === 2) {

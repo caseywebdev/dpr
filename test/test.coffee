@@ -15,9 +15,9 @@ describe 'dpr(path)', ->
 
   it 'should add -1x if dpr() is 1', ->
     hold = dpr.supported
-    dpr.supported = [1]
+    dpr supported: [1]
     dpr('/my/image.jpg').should.equal '/my/image-1x.jpg'
-    dpr.supported = hold
+    dpr supported: hold
 
   it 'should add -2x if on a MBP with retina display', ->
     if window.devicePixelRatio is 2

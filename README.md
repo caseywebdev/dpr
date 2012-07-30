@@ -42,11 +42,13 @@ dpr
 
   # Should filenames with DPR of 1 be formatted? (i.e. 'image-1x.png')
   one: true
+
+  # Should dpr scan the document when the DOM is ready? (requires jQuery or
+  # Zepto)
+  readyScan: true
 ```
 
-`dpr.configure is just a convenience method. All of the properties can be
-`accessed directly via dpr[propertyName] or extended like _.extend dpr,
-`options or $.extend dpr, options
+` Use dpr({name: val}) to modify settings so the proper hooks can be triggered.
 
 Once you're all set up, you can do cool stuff like...
 
