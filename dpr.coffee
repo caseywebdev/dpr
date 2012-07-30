@@ -78,12 +78,12 @@ dpr.scan = ->
       (options.default and options.default isnt dpr.default)
     cache = null
 
+  # Turn readyScan on or off
+  if (scan = options.readyScan) isnt dpr.readyScan and $
+    $(document)[if scan then 'on' else 'off'] 'ready', dpr.scan
+
   # Apply the settings
   dpr[name] = option for name, option of options
-
-  # Turn readyScan on or off
-  if $
-    $[if dpr.readyScan then 'on' else 'off'] 'ready', dpr.scan
 
   # Return the DPR object for chaining
   dpr
