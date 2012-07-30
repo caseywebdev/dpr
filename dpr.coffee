@@ -81,7 +81,6 @@ dpr.scan = ->
   # Apply the settings
   dpr[name] = option for name, option of options
 
-
   # Turn readyScan on or off
   if $
     $[if dpr.readyScan then 'on' else 'off'] 'ready', dpr.scan
