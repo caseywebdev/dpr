@@ -65,9 +65,9 @@ format = (path) ->
 
 # Scan the document for img[data-dpr-src] elements in need of the correct src
 # attribute
-dpr.scan = ->
+dpr.scan = ($el = $ document) ->
   if $
-    $('img[data-dpr-src]').each ->
+    $('img[data-dpr-src]', $el).each ->
       ($t = $ @).attr(src: dpr $t.data 'dprSrc').removeAttr 'data-dpr-src'
 
 # Define a configure method for easy option setting
