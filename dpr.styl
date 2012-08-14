@@ -15,10 +15,10 @@ dpr-replacer(lft rt n)
 // Do work
 dpr(sel lft rt siz = false, bkg = false)
   {sel}
-    if siz
-      background-size siz
     if bkg
       background bkg
+    if siz
+      background-size siz
   for n in dpr-available
     .dpr-{n} {sel}
       background-image url(dpr-replacer(lft, rt, n))
