@@ -48,7 +48,7 @@ dpr
   readyScan: true
 ```
 
-` Use dpr({name: val}) to modify settings so the proper hooks can be triggered.
+Use dpr({name: val}) to modify settings so the proper hooks can be triggered.
 
 Once you're all set up, you can do cool stuff like...
 
