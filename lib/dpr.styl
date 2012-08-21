@@ -13,12 +13,10 @@ dpr-replacer(lft rt n)
   lft + dpr-delimiter + n + 'x.' + rt // all other dprs
 
 // Do work
-dpr(sel lft rt siz = false, bkg = false)
+dpr(sel lft rt siz bkg)
   {sel}
-    if bkg
-      background bkg
-    if siz
-      background-size siz
+    background bkg if bkg
+    background-size siz if siz
   for n in dpr-available
     .dpr-{n} {sel}
       background-image url(dpr-replacer(lft, rt, n))
