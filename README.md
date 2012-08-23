@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/caseywebdev/dpr.png)](http://travis-ci.org/caseywebdev/dpr)
 dpr
 ===
 
