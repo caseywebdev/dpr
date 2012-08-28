@@ -13,7 +13,7 @@ dpr-replacer(lft rt n)
   lft + dpr-delimiter + n + 'x.' + rt // all other dprs
 
 // Do work
-dpr(lft rt siz bkg)
+dpr(lft rt siz=null, bkg=null)
   &
     background bkg if bkg
     background-size siz if siz
