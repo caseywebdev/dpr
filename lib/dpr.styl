@@ -15,8 +15,8 @@ dpr-replacer(lft rt n)
 // Do work
 dpr(lft rt siz=null, bkg=null)
   &
-    background bkg if bkg
-    background-size siz if siz
+    background bkg if bkg isnt null
+    background-size siz if siz isnt null
   for n in dpr-available
     .dpr-{n} &
       background-image url(dpr-replacer(lft, rt, n))
