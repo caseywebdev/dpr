@@ -60,8 +60,9 @@ format = (path) ->
 
 # Scan the document for img[data-dpr-src] elements in need of the correct src
 # attribute
-dpr.scan = ($el = $ document) ->
+dpr.scan = ($el) ->
   if $
+    $el or= $ document
     $('img[data-dpr-src]', $el).each ->
       ($t = $ @).attr(src: dpr $t.data 'dprSrc').removeAttr 'data-dpr-src'
 
@@ -70,7 +71,7 @@ dpr.scan = ($el = $ document) ->
 
   # Turn readyScan on or off
   if (scan = options.readyScan) isnt dpr.readyScan and $
-    $(document)[if scan then 'on' else 'off'] 'ready', dpr.scan
+    $(document)[if scan then 'on' else 'off'] 'ready', -> dpr.scan()
 
   # Apply the settings
   dpr[name] = option for name, option of options
