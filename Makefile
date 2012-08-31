@@ -1,19 +1,29 @@
 BIN=node_modules/.bin/
 COFFEE=$(BIN)coffee
-UGLIFYJS=$(BIN)uglifyjs
 
-all: dist/dpr.js test/test.js
+all: npm-install compile-lib compile-test
 
-dist/dpr.js: lib/dpr.coffee
-	$(COFFEE) -p lib/dpr.coffee | $(UGLIFYJS) > dist/dpr.js
+npm-install:
+	npm install
 
-test: all test/test.js
-	open test/test.html
+compile-lib:
+	$(COFFEE) -c -o dist lib
 
-test/test.js: test/test.coffee
-	$(COFFEE) -cb -o test test
+compile-lib-w:
+	$(COFFEE) -cw -o dist lib
+
+compile-test:
+	$(COFFEE) -c test
+
+compile-test-w:
+	$(COFFEE) -cw test
 
 dev:
-	$(COFFEE) support/dev
+	make -j dev-j
 
-.PHONY: all test
+dev-j: compile-lib-w compile-test-w
+
+test: all
+	open test/test.html
+
+.PHONY: test

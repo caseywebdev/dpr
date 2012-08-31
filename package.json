@@ -9,10 +9,8 @@
   },
   "devDependencies": {
     "coffee-script": "x",
-    "uglify-js": "x",
     "mocha": "x",
-    "chai": "x",
-    "watchr": "x"
+    "chai": "x"
   },
   "engines": {
     "node": "x",
