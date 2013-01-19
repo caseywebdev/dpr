@@ -1,0 +1,5 @@
+{
+  "name": "dpr",
+  "version": "0.1.0",
+  "main": ["dpr.js", "dpr.styl"]
+}
