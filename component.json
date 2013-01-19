@@ -3,6 +3,10 @@
   "repo": "caseywebdev/dpr",
   "description": "Device Pixel Ratio resolver.",
   "version": "0.1.0",
-  "scripts": ["index.js"],
-  "styles": ["index.styl"]
+  "scripts": [
+    "index.js"
+  ],
+  "styles": [
+    "index.styl"
+  ]
 }
