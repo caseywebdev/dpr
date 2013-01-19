@@ -1,5 +1,8 @@
 {
   "name": "dpr",
+  "repo": "caseywebdev/dpr",
+  "description": "Device Pixel Ratio resolver.",
   "version": "0.1.0",
-  "main": ["index.js", "index.styl"]
+  "scripts": ["index.js"],
+  "styles": ["index.styl"]
 }
