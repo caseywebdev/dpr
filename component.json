@@ -8,5 +8,9 @@
   ],
   "styles": [
     "index.styl"
-  ]
+  ],
+  "development": {
+    "visionmedia/mocha": "*",
+    "caseywebdev/chai": "*"
+  }
 }
