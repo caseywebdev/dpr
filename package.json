@@ -5,7 +5,7 @@
   "licence": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/caseywebdev/dpr.git"
+    "url": "https://github.com/caseywebdev/dpr"
   },
   "devDependencies": {
     "mocha": "x",

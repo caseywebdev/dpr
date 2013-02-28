@@ -3,9 +3,10 @@
 
   var dpr = window.dpr;
   var mocha = window.mocha;
+  var chai = window.chai;
 
   mocha.setup('bdd');
-  window.chai.should();
+  chai.should();
 
   var describe = window.describe;
   var it = window.it;
