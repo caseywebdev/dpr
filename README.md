@@ -11,7 +11,11 @@ Install
 <script src='https://raw.github.com/caseywebdev/dpr/master/dpr.js'></script>
 ```
 
-or download `dpr.js` and reference your own copy.
+...or use [bower](https://github.com/twitter/bower)...
+
+```bash
+bower install dpr
+```
 
 Use
 ---
@@ -67,7 +71,7 @@ Test
 ----
 
 ```bash
-make test
+open test/index.html
 ```
 
 

@@ -1,0 +1,9 @@
+{
+  "name": "dpr",
+  "version": "0.1.0",
+  "main": ["./dpr.js", "./dpr.styl"],
+  "devDependencies": {
+    "mocha": "x",
+    "chai": "x"
+  }
+}
