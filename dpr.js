@@ -74,9 +74,9 @@
     if (!$) return;
     $el || ($el = $(document));
     $('img[data-dpr-src]', $el).each(function () {
-      var $t = $(this);
-      var src = {src: dpr($t.data('dprSrc'))};
-      $t.attr(src).removeAttr('data-dpr-src');
+      var $self = $(this);
+      var src = {src: dpr($self.data('dprSrc'))};
+      $self.attr(src).removeAttr('data-dpr-src');
     });
   };
 
