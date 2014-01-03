@@ -12,7 +12,7 @@
   var it = window.it;
 
   describe('dpr()', function () {
-    it('should return a positve number', function () {
+    it('should return a positive number', function () {
       var n = dpr();
       n.should.be.a('number');
       (n > 0).should.equal(true);
