@@ -1,10 +1,16 @@
-(function () {
+(function (root, factory) {
+  if (typeof root.define === 'function' && root.define.amd) {
+    root.define('dpr', ['jquery'], factory);
+  } else if (typeof exports !== 'undefined') {
+    module.exports = factory(require('jquery'));
+  } else {
+    root.dpr = factory(root.jQuery);
+  }
+})(this, function ($) {
   'use strict';
 
-  var $ = window.jQuery || window.Zepto;
-
   // Define the namespace
-  var dpr = window.dpr = function (arg) {
+  var dpr = function (arg) {
 
     // Return a formatted path if a path was given
     if (typeof arg === 'string') return format(arg);
@@ -120,4 +126,6 @@
     // Zepto)
     readyScan: true
   });
+
+  return dpr;
 })();
