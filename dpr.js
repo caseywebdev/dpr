@@ -1,6 +1,6 @@
 (function (root, factory) {
   if (typeof root.define === 'function' && root.define.amd) {
-    root.define('dpr', ['jquery'], factory);
+    root.define(['jquery'], factory);
   } else if (typeof exports !== 'undefined') {
     module.exports = factory(require('jquery'));
   } else {
