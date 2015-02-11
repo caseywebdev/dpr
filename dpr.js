@@ -1,15 +1,11 @@
 (function (root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['jquery'], factory);
-  } else if (typeof exports !== 'undefined') {
-    module.exports = factory(require('jquery'));
-  } else {
-    root.dpr = factory(root.jQuery);
-  }
-})(this, function ($) {
+  if (typeof define === 'function' && define.amd) define(factory);
+  else if (typeof exports !== 'undefined') module.exports = factory();
+  else root.dpr = factory();
+})(this, function () {
   'use strict';
 
-  // Define the namespace
+  // The entire API is exposed through one function.
   var dpr = function (arg) {
 
     // Return a formatted path if a path was given
@@ -68,33 +64,14 @@
     var n = dpr();
 
     // If the DPR is 1 and formatOne is false, don't do anything to path
-    if (n === 1 && !dpr.one) return path;
+    if (n === 1 && !dpr.formatOne) return path;
 
     // Otherwise, replace the necessary part of the path with the goods
     return path.replace(dpr.match, dpr.replace.replace(/#/, n));
   };
 
-  // Scan the document for img[data-dpr-src] elements in need of the correct src
-  // attribute
-  dpr.scan = function ($el) {
-    if (!$) return;
-    $el || ($el = $(document));
-    $('img[data-dpr-src]', $el).each(function () {
-      var $self = $(this);
-      var src = {src: dpr($self.data('dprSrc'))};
-      $self.attr(src).removeAttr('data-dpr-src');
-    });
-  };
-
   // Define a configure method for easy option setting
   var config = function (options) {
-
-    var scan = options.readyScan;
-
-    // Turn readyScan on or off
-    if (scan != dpr.readyScan && $) {
-      $(document)[scan ? 'on' : 'off']('ready', dpr.scan);
-    }
 
     // Apply the settings
     for (var name in options) dpr[name] = options[name];
@@ -106,25 +83,19 @@
   config({
 
     // These are the ratios we have images for. Sort ASC (i.e. [1, 1.5, 2])
-    supported: [1, 2],
+    supported: [1, 2, 3],
 
-    // Specify a fallback for when the DPR cannot be determined. I assume 1 for
-    // now, but maybe assume 2 in a couple years, when bandwidth/average DPR
-    // increases, but for now be conservative.
-    fallback: 1,
+    // Specify a fallback for when the DPR cannot be determined.
+    fallback: 2,
 
     // What part of the file do we want to replace?
     match: /(\..*)/,
 
     // How should filename alterations be formatted? (# is the dpr)
-    replace: '-#x$1',
+    replace: '@#x$1',
 
     // Should filenames with DPR of 1 be formatted?
-    one: true,
-
-    // Should dpr scan the document when the DOM is ready? (requires jQuery or
-    // Zepto)
-    readyScan: true
+    formatOne: false
   });
 
   return dpr;

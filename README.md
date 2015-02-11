@@ -7,94 +7,38 @@ Trying to make life easier in a world with too many **d**evice **p**ixel
 Install
 -------
 
-```html
-<script src='https://raw.github.com/caseywebdev/dpr/master/dpr.js'></script>
-```
-
-...or use [bower](https://github.com/twitter/bower)...
-
 ```bash
-bower install dpr
+(bower|npm) install dpr
 ```
 
 Use
 ---
 
-First, you'll want to configure dpr to your needs before you do anything. The
-defaults are shown and should work for most cases. Opinions will differ on the
-formatting and whether DPR of 1 should be formatted or not, so feel free to
-change those.
+```js
+// Return the current device pixel ratio. The reason this is not a constant is
+// it can change between monitors!
+dpr();
 
-```coffeescript
-dpr
+// Update the config. The defaults are shown.
+dpr({
 
-  # These are the ratios we have images for. Sort ASC (i.e. [1, 1.5, 2])
-  supported: [1, 2]
+  // These are the ratios we have images for. Sort ASC (i.e. [1, 1.5, 2])
+  supported: [1, 2, 3],
 
-  # Specify a default for when the DPR cannot be determined. I assume 1 for
-  # now, but maybe assume 2 in a couple years, when bandwidth/average DPR
-  # increases, but for now be conservative.
-  default: 1
+  // Specify a fallback for when the DPR cannot be determined.
+  fallback: 2,
 
-  # What part of the file do we want to replace?
-  match: /(\..*)/
+  // What part of the file do we want to replace?
+  match: /(\..*)/,
 
-  # How should filename alterations be formatted? (# is the dpr)
-  replace: '-#x$1'
+  // How should filename alterations be formatted? (# is the dpr)
+  replace: '@#x$1',
 
-  # Should filenames with DPR of 1 be formatted? (i.e. 'image-1x.png')
-  one: true
+  // Should filenames with DPR of 1 be formatted?
+  formatOne: false
+});
 
-  # Should dpr scan the document when the DOM is ready? (requires jQuery or
-  # Zepto)
-  readyScan: true
+// Get a dpr-appropriate file name.
+// returns 'foo-bar.png' for dpr=1, 'foo-bar@2.png' for dpr=2, etc...
+dpr('foo-bar.png');
 ```
-
-Use dpr({name: val}) to modify settings so the proper hooks can be triggered.
-
-Once you're all set up, you can do cool stuff like...
-
-```coffeescript
-# Get the device pixel ratio!
-dpr()
-
-# Get a filename adjusted to the current device pixel ratio!
-dpr '/my/file/path.jpg' # -> '/my/file/path-2x.jpg' on a retina display
-
-# I like this trick for CSS
-$ -> $('html').addClass "dpr-#{dpr()}"
-```
-
-More to come!
-
-Test
-----
-
-```bash
-open test/index.html
-```
-
-
-Licence
--------
-
-Copyright (C) 2012 Casey Foster <casey@caseywebdev.com>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-

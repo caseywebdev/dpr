@@ -1,12 +1,5 @@
 {
   "name": "dpr",
-  "version": "0.2.3",
-  "main": [
-    "./dpr.js",
-    "./dpr.styl"
-  ],
-  "devDependencies": {
-    "mocha": "x",
-    "chai": "x"
-  }
+  "version": "0.3.0",
+  "license": "MIT"
 }
